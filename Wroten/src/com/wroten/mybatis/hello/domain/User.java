@@ -1,4 +1,4 @@
-package com.wroten.mybatis.hello;
+package com.wroten.mybatis.hello.domain;
 
 import lombok.Data;
 

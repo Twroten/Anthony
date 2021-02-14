@@ -3,18 +3,23 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <properties resource="db.properties"/>
     <settings>
         <!--日志技术-->
         <setting name="logImpl" value="LOG4J"/>
     </settings>
+    <typeAliases>
+        <package name="com.wroten.mybatis.hello"/>
+    </typeAliases>
     <environments default="dev">
         <environment id="dev">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/mybatisdemo?serverTimezone=UTC"/>
-                <property name="username" value="root"/>
-                <property name="password" value="root"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
 
@@ -31,6 +36,8 @@
     </environments>
 
     <mappers>
-        <mapper resource="com/wroten/mybatis/hello/UserMapper.xml"/>
+        <mapper resource="com/wroten/mybatis/hello/mapper/UserMapper.xml"/>
+        <mapper resource="com/wroten/mybatis/hello/mapper/ClientMapper.xml"/>
+
     </mappers>
 </configuration>
