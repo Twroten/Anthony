@@ -38,6 +38,7 @@
     <mappers>
         <mapper resource="com/wroten/mybatis/hello/mapper/UserMapper.xml"/>
         <mapper resource="com/wroten/mybatis/hello/mapper/ClientMapper.xml"/>
+        <mapper resource="com/wroten/mybatis/hello/mapper/EmployeeMapper.xml"/>
 
     </mappers>
 </configuration>

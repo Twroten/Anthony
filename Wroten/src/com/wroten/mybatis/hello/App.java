@@ -1,8 +1,10 @@
 package com.wroten.mybatis.hello;
 
 import com.wroten.mybatis.hello.domain.Client;
+import com.wroten.mybatis.hello.domain.Employee;
 import com.wroten.mybatis.hello.domain.User;
 import com.wroten.mybatis.hello.mapper.ClientMapper;
+import com.wroten.mybatis.hello.mapper.EmployeeMapper;
 import com.wroten.mybatis.hello.mapper.UserMapper;
 import com.wroten.mybatis.util.MyBatisUtil;
 import lombok.Cleanup;
@@ -156,5 +158,47 @@ public class App {
         ClientMapper clientMapper = sqlSession.getMapper(ClientMapper.class);
         Client client = clientMapper.login_3("will", "1111");
         System.out.println(client);
+    }
+
+
+    @Test
+    public void queryTest_1() {
+        @Cleanup
+        SqlSession sqlSession = MyBatisUtil.getSession();
+        EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+        BigDecimal minSalary = new BigDecimal("1000");
+        List<Employee> employees = employeeMapper.query(null);
+        for (Employee employee :
+                employees) {
+            System.out.println(employee);
+        }
+    }
+
+    @Test
+    public void queryTest_2() {
+        @Cleanup
+        SqlSession sqlSession = MyBatisUtil.getSession();
+        EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+        BigDecimal minSalary = new BigDecimal("1000");
+        BigDecimal maxSalary = new BigDecimal("2000");
+        List<Employee> employees = employeeMapper.query(null, null);
+        for (Employee employee :
+                employees) {
+            System.out.println(employee);
+        }
+    }
+
+    @Test
+    public void queryTest_3() {
+        @Cleanup
+        SqlSession sqlSession = MyBatisUtil.getSession();
+        EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+        BigDecimal minSalary = new BigDecimal("1000");
+        BigDecimal maxSalary = new BigDecimal("2000");
+        List<Employee> employees = employeeMapper.query(null, null, -1L);
+        for (Employee employee :
+                employees) {
+            System.out.println(employee);
+        }
     }
 }
